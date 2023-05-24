@@ -19,11 +19,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            int input = scanner.nextInt();
+            String input = scanner.nextLine();
 
             switch (input) {
-                case (1): new Game().newGame();
-                case (2): scanner.close();
+                case ("1"): new Game().newGame();
+                case ("2"): scanner.close();
                         System.exit(0);
                 default:
                     System.out.println("Введено неправильное значение. Попробуйте снова.");
