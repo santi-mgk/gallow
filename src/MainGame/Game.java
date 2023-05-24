@@ -3,7 +3,6 @@ package MainGame;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -33,14 +32,14 @@ public class Game {
 
             String input = scanner.nextLine();
 
-            if (!Character.isLetter(input.charAt(0)) || input.length() > 1 || input == "") {
+            if (input.equals("") || !Character.isLetter(input.charAt(0)) || input.length() > 1) {
                 System.out.println("Введено некорректное значение, попробуйте ещё раз.");
                 continue;
             }
 
             if (word.contains(input)) {
                 for (int i = 0; i < word.length(); i++) {
-                    if (input.charAt(0) == word.charAt(i)) {
+                    if (input.toLowerCase().charAt(0) == word.toLowerCase().charAt(i)) {
                         guessWord.replace(i, i+1, input);
                     }
                 }
@@ -79,7 +78,6 @@ public class Game {
     public String chooseWord(String words) {
         String[] splitWord = words.split(",");
         Random random = new Random();
-        String randomWord = splitWord[random.nextInt(splitWord.length)];
-        return randomWord;
+        return splitWord[random.nextInt(splitWord.length)];
     }
 }
